@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const data = require('./data.js');
 const app = express();
-const url = "mongodb+srv://admin:admin@cluster0.8o0od.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongoURL = require('utils.js');
 const mongoose = require('mongoose');
 const { userRouter } = require('./routers/userRouter.js');
 const { orderRouter } = require('./routers/orderRouter.js');
@@ -12,7 +12,7 @@ const clientID_DB = require('./utils.js');
 const clientSecret_DB = require('./utils.js');
 const clientID_paypal = require('./utils.js');
 
-mongoose.connect(url).then(() => console.log('Connected to DB')).catch((errot) => console.log(error));
+mongoose.connect(mongoURL).then(() => console.log('Connected to DB')).catch((errot) => console.log(error));
 paypal.configure({
 	'mode': 'sandbox',
 	'client_id': clientID_DB,
